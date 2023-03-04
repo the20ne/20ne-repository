@@ -1,0 +1,313 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:400,500"); /* Google Fonts */
+$logo_image: url("../../assets/images/logo.svg");
+
+// Colors
+$color_roman: #d9534f;
+$color_havelock_blue: #428bca;
+$color_cararra: #ebebea;
+$color_mine_shaft: #222222;
+$color_desert_storm: #f8f8f6;
+$color_supernova: #fccd03;
+
+// Styles
+$body_font: 15px/1.5 "Roboto Mono", Helvetica, sans-serif;
+$main_font: 500 20px/1 "Roboto Mono", Helvetica, sans-serif;
+$main_text_small_font: 15px;
+$normal_font_weight: 400;
+$medium_font_weight: 500;
+$bio_font_size: 20px;
+$bio_font_size_alt: 18px;
+$bio_font_weight: 100;
+$zero: 0;
+$border_style: 1px solid;
+
+// @extend-elements
+%font_styling {
+	font-size: inherit;
+	font-weight: $normal_font_weight;
+	margin: $zero;
+	line-height: .8;
+}
+
+// @mixin-elements
+@mixin logo_styling {
+    background: $logo_image no-repeat;
+	background-position: top left, top left;
+	background-repeat: no-repeat;
+	background-size: auto, auto 100%;
+	width: 42px;
+	height: 50px;
+	padding: $zero;
+	margin: $zero;
+}
+
+@mixin logo_other_devices {
+    width: 42px;
+    height: 50px;
+}
+
+// Template styling
+html {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+body {
+	font: $body_font;
+	color: $color_cararra;
+	background: $color_mine_shaft;
+	margin: $zero;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+dd {
+	margin: $zero;
+	padding: $zero;
+}
+
+dl {
+	margin: $zero;
+	padding: $zero;
+}
+
+h1 {
+	@extend %font_styling;
+	margin: $zero;
+	padding: $zero;
+}
+
+h2 {
+    @extend %font_styling;
+}
+
+p {
+	margin: $zero;
+	padding: $zero;
+}
+
+a {
+	color: inherit;
+	position: relative;
+	border-bottom: $border_style $color_desert_storm;
+	text-decoration: none;
+    &:hover {
+		color: $color_supernova;
+		border-bottom: $border_style $color_supernova;
+	}
+    &:focus {
+		color: $color_supernova;
+		border-bottom: $border_style $color_supernova;
+	}
+}
+
+::-moz-focus-inner {
+	padding: $zero;
+	border: $zero;
+}
+
+:focus {
+	outline: $zero;
+}
+
+.main-text {
+	font: $main_font;
+}
+
+.main-text-small {
+	font-size: $main_text_small_font;
+}
+
+.logo {
+    @include logo_styling;
+}
+
+@media(max-width: 600px) {
+	.logo {
+        @include logo_other_devices;
+	}
+	
+    .section {
+		display: block;
+		min-height: $zero;
+	}
+	
+    .column-section-main {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		flex-direction: column;
+	}
+	
+    .col-section {
+		margin-bottom: 15vw;
+	}
+	
+    .bio {
+		padding-top: 15vw;
+		font-size: $bio_font_size_alt;
+	}
+}
+
+.section {
+	z-index: 1;
+	position: relative;
+	padding: 96px 0 96px 96px;
+	width: calc(100vw - 96px - 7em);
+	display: -webkit-box;
+	display: flex;
+	//Instead of the line below you could use @include box-sizing($bs)
+	box-sizing: border-box;
+	min-height: 100vh;
+}
+
+.column-section {
+    -webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	flex-direction: column;
+}
+
+.section-bio {
+    -webkit-box-pack: justify;
+	justify-content: space-between;
+}
+
+.col-section {
+    width: 100%;
+	max-width: 382px;
+}
+
+.bio {
+    font-size: $bio_font_size;
+	font-weight: $bio_font_weight;
+	margin-bottom: -.45em;
+	max-width: 700px;
+}
+
+.list {
+	margin-top: 3.2em;
+}
+
+.list-item {
+    margin-top: .25em;
+	margin-bottom: 2em;
+    &:last-child {
+        margin-bottom: -.4em;
+	}
+}
+
+.scrunch {
+    z-index: -1;
+	position: fixed;
+	top: $zero;
+	left: $zero;
+	width: 100vw;
+	height: 100vh;
+	pointer-events: none;
+    &:after {
+		background: $color_mine_shaft;
+		content: "";
+		position: absolute;
+		top: $zero;
+		left: $zero;
+		display: block;
+		width: 100%;
+		height: 100%;
+	}
+}
+
+.footer {
+    position: fixed;
+	right: 96px;
+	bottom: 92px;
+	display: -webkit-box;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	flex-direction: column;
+	-webkit-box-align: end;
+	align-items: flex-end;
+}
+
+.footer-links {
+    margin-top: 1em;
+    line-height: 1;
+}
+
+@media (max-width: 1024px) {
+    .section {
+        padding: 48px 0 48px 48px;
+        width: calc(100vw - 48px - 7em);
+    }
+
+    .footer {
+        right: 48px;
+        bottom: 48px;
+    }
+}
+
+@media (max-width: 950px) {
+    .section {
+        padding: 7.5vw;
+        width: 100%;
+    }
+
+    .footer {
+        position: relative;
+        right: auto;
+        bottom: auto;
+        padding: 0 7.5vw 7.5vw;
+        -webkit-box-align: start;
+        align-items: flex-start;
+    }
+
+    .footer-links {
+        display: inline;
+    }
+}
+
+@media (hover: hover) {
+	.footer-links {
+		&:nth-child(odd):hover ~ .scrunch {
+			background-color: $color_roman;
+		}
+
+		&:nth-child(2n):hover ~ .scrunch {
+			background-color: $color_havelock_blue;
+		}
+	}
+
+    .link-email:hover ~ .scrunch:after {
+		-webkit-animation: one 1s .25s linear forwards;
+				animation: one 1s .25s linear forwards;
+	}
+
+    .link-behance:hover ~ .scrunch:after {
+		-webkit-animation: two 1s .25s linear forwards;
+				animation: two 1s .25s linear forwards;
+	}
+
+    .link-dribbble:hover ~ .scrunch:after {
+		-webkit-animation: three 1s .25s linear forwards;
+				animation: three 1s .25s linear forwards;
+	}
+
+    .link-linkedin:hover ~ .scrunch:after {
+		-webkit-animation: four 1s .25s linear forwards;
+				animation: four 1s .25s linear forwards;
+	}
+
+    .link-twitter:hover ~ .scrunch:after {
+		-webkit-animation: five 1s .25s linear forwards;
+				animation: five 1s .25s linear forwards;
+	}
+
+    .link-instagram:hover ~ .scrunch:after {
+		-webkit-animation: six 1s .25s linear forwards;
+				animation: six 1s .25s linear forwards;
+	}
+
+    .link-site:hover ~ .scrunch:after {
+		-webkit-animation: seven 1s .25s linear forwards;
+				animation: seven 1s .25s linear forwards;
+	}
+}

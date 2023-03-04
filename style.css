@@ -1,0 +1,49 @@
+element.style {
+@media (max-width: 950px)
+.section {
+    padding: 7.5vw;
+    width: 100%;
+}
+@media (max-width: 1024px)
+.section {
+    padding: 48px 0 48px 48px;
+    width: calc(100vw - 48px - 7em);
+}
+}
+.section-bio {
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.column-section {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+}
+.section {
+    z-index: 1;
+    position: relative;
+    padding: 96px 0 96px 96px;
+    width: calc(100vw - 96px - 7em);
+    display: -webkit-box;
+    display: flex;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+user agent stylesheet
+section {
+    display: block;
+}
+body {
+    font: 15px/1.5 "Roboto Mono", Helvetica, sans-serif;
+    color: #ebebea;
+    background: #222222;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+	
